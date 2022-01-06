@@ -1,5 +1,6 @@
 import React from 'react';
 import './styles';
+import EditIcon from '../Icons/Edit';
 
 const ContactCard = ({
   firstName,
@@ -22,6 +23,7 @@ const ContactCard = ({
   return (
     <div className="contact-card">
       <div className="contact-card--header">
+        <EditIcon />
         <p className="contact-card--fullname">{`${state.firstName} ${state.lastName}`}</p>
         <img className="contact-card--picture" src={picture.large} />
       </div>
