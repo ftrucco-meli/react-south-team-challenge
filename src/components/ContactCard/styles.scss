@@ -1,0 +1,46 @@
+.contact-card {
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  border-radius: 12px;
+  box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.5);
+
+  &--header {
+    background-color: #3076d9;
+    border-radius: 12px 12px 0 0;
+    max-height: 90px;
+  }
+
+  &--body {
+    min-height: 190px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 12px;
+  }
+
+  &--picture {
+    position: relative;
+    margin: 12px 0;
+    border-radius: 100%;
+    border: 3px solid white;
+    box-shadow: 1px 0px 10px 1px rgba(0, 0, 0, 0.5);
+    width: 100px;
+  }
+
+  &--fullname {
+    color: white;
+    margin-top: 8px;
+    font-size: 20px;
+    font-weight: 500;
+  }
+
+  &--info {
+    color: rgba(0, 0, 0, 0.4);
+
+    &:last-of-type {
+      margin-bottom: 24px;
+    }
+  }
+}
