@@ -10,6 +10,14 @@
     background-color: #3076d9;
     border-radius: 12px 12px 0 0;
     max-height: 90px;
+
+    .header--wrapper {
+      display: flex;
+    }
+  }
+
+  &--icon {
+    margin-left: 12px;
   }
 
   &--body {
@@ -34,10 +42,18 @@
     margin-top: 8px;
     font-size: 20px;
     font-weight: 500;
+    flex-grow: 3;
+    background-color: rgba(0, 0, 0, 0);
+    border: 0;
+    text-align: center;
+    max-width: fit-content;
+    margin-left: 12px;
   }
 
   &--info {
-    color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0);
+    text-align: center;
+    border: 0;
 
     &:last-of-type {
       margin-bottom: 24px;

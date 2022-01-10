@@ -1,6 +1,7 @@
 import React from 'react';
 import './styles';
 import EditIcon from '../Icons/Edit';
+import CheckMarkIcon from '../Icons/CheckMark';
 
 const ContactCard = ({
   firstName,
@@ -10,27 +11,54 @@ const ContactCard = ({
   location,
   picture,
 }) => {
+  const [isEditing, setIsEditing] = React.useState(false);
   const [state, setState] = React.useState({
-    firstName,
-    lastName,
+    name: `${firstName} ${lastName}`,
     email,
     phoneNumber,
-    city: location.city,
-    state: location.state,
+    location: `${location.city}, ${location.state}`,
     picture,
   });
+
+  const handleOnEditClick = () => {
+    setIsEditing(!isEditing);
+  };
+
+  const Icon = isEditing ? CheckMarkIcon : EditIcon;
 
   return (
     <div className="contact-card">
       <div className="contact-card--header">
-        <EditIcon />
-        <p className="contact-card--fullname">{`${state.firstName} ${state.lastName}`}</p>
+        <div className="header--wrapper">
+          <Icon className="contact-card--icon" onClick={handleOnEditClick} />
+          <input
+            className="contact-card--fullname"
+            value={`${state.name}`}
+            disabled={!isEditing}
+            onChange={(e) => setState({ ...state, name: e.target.value })}
+          />
+        </div>
         <img className="contact-card--picture" src={picture.large} />
       </div>
       <div className="contact-card--body">
-        <p className="contact-card--info">{state.email}</p>
-        <p className="contact-card--info">{state.phoneNumber}</p>
-        <p className="contact-card--info">{`${state.city} ${state.state}`}</p>
+        <input
+          className="contact-card--info"
+          value={state.email}
+          disabled={!isEditing}
+          onChange={(e) => setState({ ...state, email: e.target.value })}
+        />
+        <input
+          className="contact-card--info"
+          value={state.phoneNumber}
+          disabled={!isEditing}
+          onChange={(e) => setState({ ...state, phoneNumber: e.target.value })}
+        />
+        <input
+          className="contact-card--info"
+          value={`${state.location}`}
+          disabled={!isEditing}
+          onChange={(e) => setState({ ...state, location: e.target.value })}
+        />
       </div>
     </div>
   );
