@@ -2,6 +2,7 @@ import React from 'react';
 import './styles';
 import EditIcon from '../Icons/Edit';
 import CheckMarkIcon from '../Icons/CheckMark';
+import getUsers from '../../services/users';
 
 const ContactCard = ({
   firstName,
@@ -22,6 +23,7 @@ const ContactCard = ({
 
   const handleOnEditClick = () => {
     setIsEditing(!isEditing);
+    getUsers({ limit: 40 }).then((response) => console.log(response));
   };
 
   const Icon = isEditing ? CheckMarkIcon : EditIcon;

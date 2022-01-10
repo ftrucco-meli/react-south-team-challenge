@@ -2,23 +2,26 @@ import React from 'react';
 import './style.css';
 import ContactCard from './components/ContactCard';
 import Head from 'react-declarative-head';
+import getUsers from './services/users';
 
 export default function App() {
-  const data = {
-    firstName: 'Franco',
-    lastName: 'Trucco',
-    email: 'franco.trucco1@gmail.com',
-    phoneNumber: '+54 9 3492 638897',
-    location: {
-      city: 'Rafaela',
-      state: 'Santa Fe',
+  const [state, setState] = React.useState([
+    {
+      firstName: 'Franco',
+      lastName: 'Trucco',
+      email: 'franco.trucco1@gmail.com',
+      phoneNumber: '+54 9 3492 638897',
+      location: {
+        city: 'Rafaela',
+        state: 'Santa Fe',
+      },
+      picture: {
+        large: 'https://randomuser.me/api/portraits/men/75.jpg',
+        medium: 'https://randomuser.me/api/portraits/med/men/75.jpg',
+        thumbnail: 'https://randomuser.me/api/portraits/thumb/men/75.jpg',
+      },
     },
-    picture: {
-      large: 'https://randomuser.me/api/portraits/men/75.jpg',
-      medium: 'https://randomuser.me/api/portraits/med/men/75.jpg',
-      thumbnail: 'https://randomuser.me/api/portraits/thumb/men/75.jpg',
-    },
-  };
+  ]);
 
   return (
     <div>
@@ -30,7 +33,9 @@ export default function App() {
           rel="stylesheet"
         />
       </Head>
-      <ContactCard {...data} />
+      {state.map((users) => (
+        <ContactCard {...users} />
+      ))}
     </div>
   );
 }
